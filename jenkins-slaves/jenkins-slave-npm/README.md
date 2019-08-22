@@ -4,12 +4,18 @@ Provides a docker image of the nodejs v8 runtime with npm for use as a Jenkins s
 ## Build local
 `docker build -t jenkins-slave-npm .`
 
+Or for Red Hat Enterprise Linux:
+
+`docker build -t jenkins-slave-npm -f Dockerfile.rhel7 .`
+
+### NOTE: To build the RHEL image you will need to have access to the `rhel-7-server-rhoar-nodejs-10-rpms` repository
+
 ## Run local
 For local running and experimentation run `docker run -i -t jenkins-slave-npm /bin/bash` and have a play once inside the container.
 
 ## Build in OpenShift
 ```bash
-oc process -f ../templates/jenkins-slave-generic-template.yml \
+oc process -f ../.openshift/templates/jenkins-slave-generic-template.yml \
     -p NAME=jenkins-slave-npm \
     -p SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-npm \
     | oc apply -f -

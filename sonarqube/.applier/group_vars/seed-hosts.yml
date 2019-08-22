@@ -1,5 +1,6 @@
 namespace: sonarqube
 app_name: sonarqube
+jenkins_url: http://jenkins:80
 
 build:
   NAME: "{{ app_name }}"
@@ -7,13 +8,14 @@ build:
   SOURCE_REPOSITORY_REF: master
   SOURCE_CONTEXT_DIR: "{{ app_name }}"
 postgresql:
+  DATABASE_SERVICE_NAME: sonardb
   POSTGRESQL_DATABASE: sonar
   VOLUME_CAPACITY: 5
   POSTGRESQL_PASSWORD: sonar
   POSTGRESQL_USER: sonar
 deploy:
   POSTGRES_DATABASE_NAME: "{{ postgresql.POSTGRESQL_DATABASE }}"
-
+  JENKINS_URL: "{{ jenkins_url }}"
 
 openshift_cluster_content:
 - object: Environment Setup
