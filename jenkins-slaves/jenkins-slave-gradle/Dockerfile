@@ -1,6 +1,6 @@
 FROM quay.io/openshift/origin-jenkins-agent-base:4.1
 
-ENV GRADLE_VERSION=4.8
+ENV GRADLE_VERSION=2.8
 
 RUN curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip && \
     mkdir -p /opt/gradle && \
