@@ -1,6 +1,6 @@
 FROM quay.io/openshift/origin-jenkins-agent-base:4.1
 
-ENV GRADLE_VERSION=4.8
+ENV GRADLE_VERSION=2.8
 
 RUN yum install -y java-1.8.0-openjdk-devel && \
     yum clean all && \
